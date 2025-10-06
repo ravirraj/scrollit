@@ -1,22 +1,26 @@
 import { IVideo } from "@/models/Video.models";
 
-export type videoType = Omit<IVideo, "_id">;
+export type VideoType = Omit<IVideo, "_id"> & { 
+  _id?: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
 
-type fetchOptions = {
+type FetchOptions = {
     method?: "GET" | "POST" | "PUT" | "DELETE";
     headers?: Record<string, string>;
     body?: any;
 };
 
-
 class ApiClient {
-    private async fetch<T>(url: string, options: fetchOptions = {}): Promise<T> {
+    private async fetch<T>(url: string, options: FetchOptions = {}): Promise<T> {
         const method = options.method || "GET";
         const headers = {
             "Content-Type": "application/json",
             ...options.headers,
         };
-       const response = await fetch(`api/${url}`, {
+        
+        const response = await fetch(`/api/${url}`, {
             method,
             headers,
             body: options.body ? JSON.stringify(options.body) : undefined,
@@ -29,19 +33,16 @@ class ApiClient {
         return response.json() as Promise<T>;
     }
 
-    async getVideos() {
-        return this.fetch("/videos");
+    async getVideos(): Promise<{ videos: VideoType[] }> {
+        return this.fetch<{ videos: VideoType[] }>("/video");
     }
 
-    async createVideo(data : videoType) {
-        return this.fetch("/videos", {
+    async createVideo(data: VideoType): Promise<{ success: boolean; video: VideoType }> {
+        return this.fetch<{ success: boolean; video: VideoType }>("/video", {
             method: "POST",
             body: data,
         });
     }
+}
 
-    }
-
-
-
-    export const apiClient = new ApiClient(); 
+export const apiClient = new ApiClient(); 
