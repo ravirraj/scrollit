@@ -3,6 +3,8 @@ import { dbConnect } from "./db"
 import User from "@/models/User.models"
 import bcrypt from "bcryptjs"
 import { NextAuthOptions } from "next-auth"
+import { JWT } from "next-auth/jwt"
+import { Session } from "next-auth"
 export const authOptions : NextAuthOptions = {
     providers: [
         // add your providers here
@@ -43,13 +45,13 @@ export const authOptions : NextAuthOptions = {
         })
     ],
     callbacks: {
-        async jwt({token, user}) {
+        async jwt({token, user}: {token: JWT, user: any}) {
             if (user) {
                 token.id = user.id;
             }
             return token;
         },
-        async session({session, token}) {
+        async session({session, token}: {session: Session, token: JWT}) {
             if (token) {
                 session.user.id = token.id as string;
             }

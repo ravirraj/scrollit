@@ -7,7 +7,7 @@ import {
     ImageKitUploadNetworkError,
     upload,
 } from "@imagekit/next";
-import { useRef, useState } from "react";
+import {  useState } from "react";
 
 
 interface FileUploadProps {
