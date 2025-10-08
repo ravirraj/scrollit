@@ -16,7 +16,9 @@ export interface IVideo{
         width:number;
         height:number;
         quality :number
-    }
+    },
+    likes?: mongoose.Types.ObjectId[];
+    comments?: mongoose.Types.ObjectId[];
 }
 
 
@@ -48,8 +50,19 @@ const videoSchema = new Schema<IVideo>({
         width:Number,
         height:Number,
         quality : Number
-    }
-},{timestamps:true})        
+    },
+
+    //TODO want ot optimize the way likes and comments are stored
+    likes:[{
+        type:Schema.Types.ObjectId,
+        ref:"User",
+
+    }],
+    comments:[{
+        type:Schema.Types.ObjectId,
+        ref:"Comment"
+    }]
+},{timestamps:true})
 
 
 const Video = models?.Video || model<IVideo>("Video", videoSchema)
