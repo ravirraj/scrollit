@@ -365,7 +365,7 @@ export default function FeedPage() {
                   <motion.div
                     initial={{ scale: 0, rotate: 0, opacity: 1 }}
                     animate={{ scale: 1.5, rotate: 15, opacity: 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.5 }}
                     className="absolute inset-0 flex items-center justify-center text-pink-500 text-6xl pointer-events-none"
                   >
                     ❤️
@@ -396,7 +396,7 @@ export default function FeedPage() {
       </div>
 
       {/* Bottom navigation - Outside swipe container */}
-      <div className="absolute bottom-0 w-full flex justify-center items-center space-x-16 bg-black/95 md:bg-black/90 md:backdrop-blur-sm md:rounded-t-3xl md:mx-4 md:mb-4 p-4 md:p-3 z-50 safe-area-inset-bottom">
+      <div className="absolute bottom-0 w-full flex justify-center items-center space-x-20 bg-black/95 md:bg-black/90 md:backdrop-blur-sm md:rounded-t-3xl md:mx-4 md:mb-4 p-4 md:p-3 z-50 safe-area-inset-bottom">
         <button className="text-white hover:text-pink-500 transition p-2">
           <Home className="w-7 h-7 md:w-8 md:h-8" />
         </button>

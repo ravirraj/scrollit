@@ -10,6 +10,7 @@ export async function GET() {
         await dbConnect()
 
         const videos = await Video.find({}).sort({createdAt:-1}).lean().populate('userId')
+        console.log(videos)
 
         if(videos.length === 0 || !videos)  {
             return new NextResponse("No videos found", { status: 404 })
