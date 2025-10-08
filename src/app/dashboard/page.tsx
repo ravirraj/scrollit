@@ -78,8 +78,9 @@ export default function FeedPage() {
 
   // Cleanup effect to stop all videos when component unmounts
   useEffect(() => {
+    const currentVideoRefs = videoRefs.current;
     return () => {
-      videoRefs.current.forEach((video) => {
+      currentVideoRefs.forEach((video) => {
         if (video) {
           video.pause();
           video.muted = true;

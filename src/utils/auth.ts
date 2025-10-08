@@ -45,8 +45,8 @@ export const authOptions : NextAuthOptions = {
         })
     ],
     callbacks: {
-        async jwt({ token, user }: { token: JWT; user?: any; account?: any; profile?: any; trigger?: string; isNewUser?: boolean; session?: any }) {
-            if (user && user.id) {
+        async jwt({ token, user }) {
+            if (user) {
                 token.id = user.id;
             }
             return token;

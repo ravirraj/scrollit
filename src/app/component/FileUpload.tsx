@@ -46,9 +46,9 @@ interface ImageKitUploadResponse {
     id: string;
     name: string;
   };
-  embeddedMetadata?: Record<string, any>;
-  customMetadata?: Record<string, any>;
-  extensionStatus?: Record<string, any>;
+  embeddedMetadata?: Record<string, unknown>;
+  customMetadata?: Record<string, unknown>;
+  extensionStatus?: Record<string, unknown>;
 }
 
 interface FileUploadProps {
