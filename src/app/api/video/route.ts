@@ -1,9 +1,8 @@
 import { dbConnect } from "@/utils/db";
-import Video, { IVideo } from "@/models/Video.models";
+import Video from "@/models/Video.models";
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/auth";
-import { Bona_Nova } from "next/font/google";
 
 export async function GET() {
     try {

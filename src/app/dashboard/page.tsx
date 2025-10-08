@@ -251,7 +251,6 @@ export default function FeedPage() {
     );
   }
 
-  console.log(videos)
 
   return (
     <div className="w-full h-screen bg-black overflow-hidden relative">
