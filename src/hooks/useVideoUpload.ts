@@ -6,8 +6,22 @@ interface UploadVideoData {
   file: File;
 }
 
+interface VideoUploadResponse {
+  success: boolean;
+  video: {
+    _id: string;
+    videoUrl: string;
+    title: string;
+    description: string;
+    thumbnailUrl: string;
+    userId: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+}
+
 interface UseVideoUploadResult {
-  uploadVideo: (data: UploadVideoData) => Promise<any>;
+  uploadVideo: (data: UploadVideoData) => Promise<VideoUploadResponse>;
   isUploading: boolean;
   progress: number;
   error: string | null;

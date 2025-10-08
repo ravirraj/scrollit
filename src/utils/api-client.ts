@@ -9,7 +9,7 @@ export type VideoType = Omit<IVideo, "_id"> & {
 type FetchOptions = {
     method?: "GET" | "POST" | "PUT" | "DELETE";
     headers?: Record<string, string>;
-    body?: any;
+    body?: Record<string, unknown> | FormData | string;
 };
 
 class ApiClient {

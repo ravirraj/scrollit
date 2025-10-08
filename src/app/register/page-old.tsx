@@ -4,42 +4,12 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
 
-function page() {
+function Page() {
     const [email , setEmail] = useState("")
     const [username , setUsername] = useState("")
     const [password , setPassword] = useState("")
     const [confirmPassword , setConfirmPassword] = useState("")
     const router = useRouter()
-
-
-    const handleSubmit = async (e : React.FormEvent<HTMLFormElement>)=>{
-        e.preventDefault()
-        // Perform registration logic here
-        if(password != confirmPassword){
-           alert("pass no match")
-        return
-        }
-           
-        try {
-        const res = await fetch('/api/auth/register', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email, password })
-        })
-
-        const data = await res.json()
-        if(!res.ok){
-            throw new Error(data.message || "regestration failed")
-        }
-        // Registration successful, redirect to login page
-        router.push('/login')
-    } catch (error) {
-        console.log("Error during registration:", error)
-    }
-    }
-
 
 
  return (
@@ -100,4 +70,4 @@ function page() {
 
 }
 
-export default page
+export default Page

@@ -23,8 +23,36 @@ import {
   upload,
 } from "@imagekit/next";
 
+// ImageKit upload response interface
+interface ImageKitUploadResponse {
+  fileId: string;
+  name: string;
+  url: string;
+  thumbnailUrl?: string;
+  height?: number;
+  width?: number;
+  size: number;
+  filePath: string;
+  tags?: string[];
+  isPrivateFile?: boolean;
+  customCoordinates?: string;
+  fileType: string;
+  AITags?: Array<{
+    name: string;
+    confidence: number;
+    source: string;
+  }>;
+  versionInfo?: {
+    id: string;
+    name: string;
+  };
+  embeddedMetadata?: Record<string, any>;
+  customMetadata?: Record<string, any>;
+  extensionStatus?: Record<string, any>;
+}
+
 interface FileUploadProps {
-  onSuccess?: (response: any) => void;
+  onSuccess?: (response: ImageKitUploadResponse) => void;
   onProgress?: (progress: number) => void;
   fileType?: "image" | "video";
   onClose?: () => void;

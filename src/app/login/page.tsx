@@ -180,7 +180,7 @@ function LoginPage() {
         </form>
 
         <p className="text-center text-gray-400 mt-6">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <span className="text-pink-500 hover:underline cursor-pointer" onClick={() => router.push('/register')}>Register</span>
         </p>
       </motion.div>

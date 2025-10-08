@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, MessageCircle, Share, Upload, Home, User, Volume2, VolumeX, LogOut } from 'lucide-react';
+import { Heart, MessageCircle, Share, Upload, Home, Volume2, VolumeX, LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Video } from '@imagekit/next';
 import { apiClient, VideoType } from '@/utils/api-client';
@@ -313,7 +313,7 @@ export default function FeedPage() {
                   </h3>
                   <p className="text-white text-sm opacity-90"
                      style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
-                    @{typeof video.userId === 'object' && 'username' in video.userId ? (video.userId as any).username : (typeof video.userId === 'string' ? video.userId : 'unknown')}
+                    @{typeof video.userId === 'object' && 'username' in video.userId ? (video.userId as { username: string }).username : (typeof video.userId === 'string' ? video.userId : 'unknown')}
                   </p>
                 </div>
 
